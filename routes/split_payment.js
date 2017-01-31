@@ -30,10 +30,11 @@ var create_bank_account = function(data, callback) {
 
 	var bank_account_req = https.request(bank_account_options, function(resp) {
 		callback(resp);
+		
+		bank_account_req.write(bank_account_data);
+		bank_account_req.end();
 	});
 
-	bank_account_req.write(bank_account_data);
-	bank_account_req.end();
 };
 
 var create_recipient = function(bank_id, data, callback) {
@@ -54,10 +55,11 @@ var create_recipient = function(bank_id, data, callback) {
 
 	var recipient_req = https.request(recipient_options, function(resp) {
 		callback(resp);
+
+		recipient_req.write(recipient_data);
+		recipient_req.end();
 	});
 
-	recipient_req.write(recipient_data);
-	recipient_req.end();
 };
 
 var create_card = function(data, callback) {
@@ -79,10 +81,11 @@ var create_card = function(data, callback) {
 
 	var card_req = https.request(card_options, function(resp) {
 		callback(resp);
+
+		card_req.write(card_data);
+		card_req.end();
 	});
 
-	card_req.write(card_data);
-	card_req.end();
 }
 
 var obtain_payables = function(transaction_id, callback) {
@@ -95,10 +98,10 @@ var obtain_payables = function(transaction_id, callback) {
 
 	var card_req = https.request(card_options, function(resp) {
 		callback(resp);
-	});
 
-	card_req.write(card_data);
-	card_req.end();
+		card_req.write(card_data);
+		card_req.end();
+	});
 
 }
 
@@ -200,10 +203,10 @@ router.post("/", function(req, res, next) {
 		});
 		// Obtaining transaction_id
 		transaction_id = response.id;
-	});
 
-	transaction.write(transaction_data);
-	transaction.end();
+		transaction.write(transaction_data);
+		transaction.end();
+	});
 
 	// Step 4: Obtaining the Payables
 	obtain_payables(transaction_id, function(response) {
