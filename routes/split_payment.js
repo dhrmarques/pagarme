@@ -110,7 +110,7 @@ var obtain_payables = function(transaction_id, callback) {
 	5. If payment is okay, proceed; else, show the error to the Payment Origin
 	6. Fetch the Payables using the Transaction ID (expected to be returned after step 4)
 	7. Show the Payable objects and indicate to the Payment Origin that it has been successful */
-router.post("/split_payment", function(req, res, next) {
+router.post("/", function(req, res, next) {
 	// Step 1: Creating Bank Agencies
 	var bank_account_id_0 = "";
 	var bank_account_id_1 = "";
