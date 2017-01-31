@@ -8,8 +8,8 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-// Adding split_rules.js to Express.
-var split_rules = require('./routes/split_rules');
+// Adding split_payment.js to Express.
+var split_rules = require('./routes/split_payment');
 
 var app = express();
 
@@ -29,7 +29,7 @@ app.use('/', routes);
 app.use('/users', users);
 
 // Adding split_rules.js to Express routes.
-app.use('/split_rules', split_rules);
+app.use('/split_payment', split_rules);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
